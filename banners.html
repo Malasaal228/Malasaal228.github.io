@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Баннеры</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="sidebar">
+          <div class="logo-container">
+            <img src="/assets/logo.png" alt="FotoPrint Logo" class="logo">
+          </div>
+            <div class="user-panel">
+            </div>
+            <nav class="main-nav">
+               <ul>
+                    <li><a href="index.html">Домой</a></li>
+                    <li><a href="users.html">Пользователи</a></li>
+                     <li class="active"><a href="banners.html">Баннеры</a></li>
+                   <li><a href="events.html">Мероприятия</a></li>
+                    <li><a href="mediafiles.html">Медиафайлы</a></li>
+                    <li><a href="pages.html">Страницы</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Поиск..." />
+          <button id="search-button" aria-label="Поиск">
+              🔍
+          </button>
+          <button id="clear-button" aria-label="Удалить">
+              🗑️
+          </button>
+      </div>
+        <main class="main-content">
+            <header class="content-header">
+                <div class="balance-info">
+                </div>
+                <div class="header-controls">
+                </div>
+            </header>
+            <section class="content-section">
+                <div class="container">
+                    <h1 class="section-title">Баннеры</h1>
+                    <button class="custom-btn" onclick="document.getElementById('addBannerModal').style.display='block'">Добавить новый баннер</button>
+                    <div class="table-wrapper">
+                        <table class="orders-table">
+                            <thead> 
+                </div>
+                 <div id="addBannerModal" class="modal">
+                     <form class="modal-content" id="addBannerForm"  method="POST" action="#">
+                        <span onclick="document.getElementById('addBannerModal').style.display='none'" class="close" title="Закрыть">&times;</span>
+                        <h2 class="section-title">Добавить новый баннер</h2>
+                        <label for="bannerName">Название:</label>
+                        <input type="text" id="bannerName" name="bannerName" required>
+                        <label for="bannerLink">Ссылка:</label>
+                        <input type="url" id="bannerLink" name="bannerLink" required>
+                        <button class="custom-btn" type="submit">Добавить</button>
+                   </form>
+                </div>
+            </section>
+        </main>
+    </div>
+   <script src="script.js"></script>
+    <script>
+        const banners = [
+            {id: 1, name: 'Летняя распродажа', link: 'https://example.com/summer-sale'},
+            {id: 2, name: 'Новая коллекция', link: 'https://example.com/new-collection'},
+            {id: 3, name: 'Скидки', link: 'https://example.com/discounts'}
+        ];
+
+       function generateTableRows() {
+         const tableBody = document.getElementById('bannersTableBody');
+            banners.forEach(banner => {
+             const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${banner.id}</td>
+                <td>${banner.name}</td>
+               <td><a href="${banner.link}" target="_blank">${banner.link}</a></td>
+              <td><button class="action-btn">Удалить</button></td>
+            `;
+            tableBody.appendChild(row);
+        })
+    }
+        generateTableRows();
+    const form = document.getElementById('addBannerForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+        const bannerName = document.getElementById('bannerName').value;
+         const bannerLink = document.getElementById('bannerLink').value;
+         const newBanner = {
+             id: banners.length + 1,
+             name: bannerName,
+            link: bannerLink
+            };
+
+        banners.push(newBanner);
+          generateTableRows();
+
+        document.getElementById('addBannerModal').style.display = 'none';
+             form.reset();
+           });
+    </script>
+</body>
+</html>

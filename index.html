@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лого</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="sidebar">
+          <div class="logo-container">
+            <img src="d34a49cc-6337-4f6c-abfa-00161f4eadef.png" alt="FotoPrint Logo" class="logo">
+          </div>
+            <div class="user-panel">
+            <nav class="main-nav">
+                <ul>
+                  <li><a href="index.html">Домой</a></li>
+                  <li><a href="users.html">Пользователи</a></li>
+                  <li><a href="banners.html">Баннеры</a></li>
+                   <li><a href="events.html">Мероприятия</a></li>
+                    <li><a href="mediafiles.html">Медиафайлы</a></li>
+                  <li><a href="pages.html">Страницы</a></li>
+                </ul>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="checkbox">
+                  <label for="checkbox">Toggle</label>
+            </nav>
+          </div>
+        </aside>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Поиск..." />
+          <button id="search-button" aria-label="Поиск">
+              🔍
+          </button>
+          <button id="clear-button" aria-label="Удалить">
+              🗑️
+          </button>
+      </div>
+        <main class="main-content">
+            <header class="content-header">
+               <div class="balance-info">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="header-controls">
+              </div>
+            </header>
+              <h2 class="section-title"></h2>
+              <div class="dashboard-grid">
+                   <a href="alldata.html" class="dashboard-item">
+                      <h3>Общие данные</h3>
+                        <div class="placeholder-block data-image">
+                            <img src="qio.png" alt="Общие данные" class="data-image-img">
+                        </div>
+                    </a>
+                    <a href="users.html" class="dashboard-item">
+                      <h3>Пользователи</h3>
+                        <div class="placeholder-block data-image">
+                           <img src="qio.png" alt="Пользователи" class="data-image-img">
+                        </div>
+                   </a>
+                   <a href="events.html" class="dashboard-item">
+                      <h3>Мероприятия</h3>
+                         <div class="placeholder-block data-image">
+                           <img src="qio.png" alt="Мероприятия" class="data-image-img">
+                         </div>
+                     </a>
+                     <a href="news.html" class="dashboard-item">
+                      <h3>Новости</h3>
+                       <div class="placeholder-block data-image">
+                         <img src="qio.png" alt="Новости" class="data-image-img">
+                       </div>
+                    </a>
+                    <a href="banners.html" class="dashboard-item">
+                         <h3>Баннеры</h3>
+                         <div class="placeholder-block data-image">
+                          <img src="qio.png" alt="Новости" class="data-image-img">
+                         </div>
+                    </a>
+                    <body class="dark"> 
+              </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+      const checkbox = document.getElementById('checkbox');
+  
+      checkbox.addEventListener('change', () => {
+          document.body.classList.toggle('dark-theme', checkbox.checked);
+      });
+      document.getElementById('search-button').addEventListener('click', () => {
+    const searchTerm = document.getElementById('search-input').value;
+    if (searchTerm) {
+        console.log(`Поиск по запросу: "${searchTerm}"`);
+        // Здесь можно добавить код для выполнения поиска
+    }
+});
+
+document.getElementById('clear-button').addEventListener('click', () => {
+    document.getElementById('search-input').value = '';
+});
+
+
+  </script>
+</body>
+</html
